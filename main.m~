@@ -1,0 +1,5 @@
+[A,root] = randBST(5);
+A = addParent(A,root);
+A(root,3) = 0;
+A;
+% En saa rootin
