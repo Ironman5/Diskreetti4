@@ -2,7 +2,12 @@
 %A = addParent(A,root);
 %root = 2;
 %A
-%plotTreeA(A)
-%A = addHeight(A, root);
+%load("taulukkoA.mat")
+% plotTreeA(A)
+%A = addHeight(A, root)
 %X = 5;
-[RotA,root] = leftRot(A,root,X)
+% [leftRotA,root] = leftRot(A,root,X)
+% plotTreeA(leftRotA)
+% [rightRotA,root] = rightRot(A,root,X)
+% plotTreeA(rightRotA)
+
