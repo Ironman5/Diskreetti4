@@ -1,11 +1,10 @@
-function [RR, root] = rightRot(A,X,root)
+function [RR,root] = rightRot(A,X,root)
 
 % X,Y,Z sekä T2 tulevat tehtävänannon Figure 2:sta
 
-% Kopioidaan taulukko A uudeksi taulukoksi RR
-RR = A;
-Y = A(X,1);  
-T2 = A(Y,2); 
+RR = A; % kopioitu taulukko A
+Y = A(X,1); % X:n vasen lapsi
+T2 = A(Y,2); % Y:n oikea lapsi
 
 % Siirretään Y X:n paikalle
 RR(Y,2) = X; % Y:n oikea lapsi on X
@@ -18,7 +17,7 @@ if A(Y,2) > -1 % jos Y:lla oli oikea lapsi niin
     RR(X,1) = T2; % X:n vasen lapsi on T2
     RR(T2,3) = X; % T2:n isä on X
 else 
-    RR(X,1) = -1; % muuten X:n vasenta lasta ei ole
+    RR(X,1) = -1; % jos X:n vasenta lasta ei ole
 end
 
 
