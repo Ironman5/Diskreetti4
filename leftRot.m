@@ -1,30 +1,24 @@
-function [leftRot, root] = leftRot(A,root,X)
+function [LR, root] = leftRot(A,X,root)
 
 % X,Y,Z sekä T3 tulevat tehtävänannon Figure 2:sta
 
 % Kopioidaan taulukko A
-leftRot = A;
+LR = A;
 Z = A(X,2); 
-R = A(X,3);
 T3 = A(Z,1);
-
+  
 % Siirretään Z X:n paikalle
-leftRot(Z,1) = X; % Z:n vasen puu on X
-leftRot(Z,3) = A(X,3); % Z:n isä on
-leftRot(X,2) = Z; % R:n oikea lapsi on Z
+LR(Z,1) = X; % Z:n vasen puu on X
+LR(Z,3) = A(X,3); % Z:n isä on root
+LR(root,2) = Z; % juuren oikea lapsi on Z
 
-% Jos X:n isä on juuri niin R on uusi juuri
-if R == root
-    root = Z;
-end
-
-% Siirretään X Y:n paikalle
-leftRot(X,3) = Z; % X:n isä on Z
-leftRot(X,2) = T3; % X:n oikea lapsi on T3
-
-% Siirretään T3 X:n oikeaksi lapseksi
-if T3 > -1
-    leftRot(T3,3) = X;
+% Siirretään X Y:n paikalle ja T3 X:n oikeaksi lapseksi
+LR(X,3) = Z; % X: isä on Z
+if LR(Z,1) > -1 % jos Z:lla oli vasen lapsi niin
+    LR(X,2) = T3; % X: oikea lapsi on T3
+    LR(T3,3) = X; % T3:n isä on X
+else 
+    LR(X,2) = -1; % muuten X:n oikea lasta ei ole
 end
 
 

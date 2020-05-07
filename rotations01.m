@@ -58,12 +58,12 @@ else
     
     % If left unbalanced, then balance it.
     if A(x,1) ~= -1 && A(A(x,1),5) == 0
-        [A,iroot] = BottomUpBal02(A, A(x,1), iroot);
+        [A,iroot] = rotationsBottomUp(A, A(x,1), iroot);
     end
     
     % If right unbalanced, then balance it.
     if A(x,2) ~= -1 && A(A(x,2),5) == 0
-        [A,iroot] = BottomUpBal02(A, A(x,2), iroot);
+        [A,iroot] = rotationsBottomUp(A, A(x,2), iroot);
     end
     
     leftC  = A(x,1);

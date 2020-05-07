@@ -1,31 +1,27 @@
-function [rightRot, root] = rightRot(A,root,X)
+function [RR, root] = rightRot(A,X,root)
 
 % X,Y,Z sekä T2 tulevat tehtävänannon Figure 2:sta
 
-% Kopioidaan taulukko A
-rightRot = A;
-Y = A(X,1); 
-R = A(X,3); 
+% Kopioidaan taulukko A uudeksi taulukoksi RR
+RR = A;
+Y = A(X,1);  
 T2 = A(Y,2); 
 
 % Siirretään Y X:n paikalle
-rightRot(Y,2) = X; % Y:n oikea puu on X
-rightRot(Y,3) = A(X,3); % Y:n isä on A
-rightRot(X,1) = Y; % R:n vasen lapsi on Y
+RR(Y,2) = X; % Y:n oikea lapsi on X
+RR(Y,3) = A(X,3); % Y:n isä on root
+RR(root,2) = Y; % juuren vasen lapsi on Y
 
-% Jos X:n isä on juuri niin R on uusi juuri
-if R == root
-    root = R;
+% Siirretään X Z:n paikalle ja T2 X:n vasemmaksi lapseksi
+RR(X,3) = Y; % X: isä on Y
+if A(Y,2) > -1 % jos Y:lla oli oikea lapsi niin
+    RR(X,1) = T2; % X:n vasen lapsi on T2
+    RR(T2,3) = X; % T2:n isä on X
+else 
+    RR(X,1) = -1; % muuten X:n vasenta lasta ei ole
 end
 
-% Siirretään X Z:n paikalle
-rightRot(X,3) = Y; % X:n isä on Y
-rightRot(X,1) = T2; % X:n oikea lapsi on T3
 
-% Siirretään T2 X:n vasemmaksi lapseksi
-if T2 > -1
-    rightRot(T2,3) = X;
-end
 
 % 7. compute the height of the subtree whose root is X
 
