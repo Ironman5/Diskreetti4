@@ -20,12 +20,21 @@ else
     RR(X,1) = -1; % jos X:n vasenta lasta ei ole
 end
 
-
-
 % 7. compute the height of the subtree whose root is X
+T2_pituus = RR(T2,4);
+Z = RR(RR(X,2),4);             %Z = X:n oikean alihaaran pituus
+RR(X,4)=max(Z+1,T2_pituus+1); % X:n pituus
 
-% 8. compute the height of the subtree whose root is Z
+% 8. compute the height of the subtree whose root is Y
+T1 = RR(Y,4);
+T1_pituus = RR(T1,4);
+X_pituus=RR(X,4);
+RR(Y,4)=max(X_pituus+1, T1_pituus+1); % Y:n pituus
 
 % 9. compute the height of the subtree whose root is A
+A_vasenpituus = RR(RR(root,1),4);
+Y_pituus=RR(Y,4);
+RR(root,4)=max(Y_pituus+1,A_vasenpituus+1); % A:n pituus
+
 
 end
